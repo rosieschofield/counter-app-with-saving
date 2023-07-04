@@ -1,32 +1,55 @@
 import { useState } from "react";
 
-export default function NumberPicker(): JSX.Element {
-  const [counterValueFromCurrentRender, queueRerenderWithNewCounterValue] =
-    useState(0);
+export default function EmojiPicker(): JSX.Element {
+  const [emojiValueFromCurrentRender, queueRerenderWithNewEmojiValue] =
+    useState<string>();
   const [favouriteValueFromCurrentRender, queueRerenderWithNewFavouriteValue] =
-    useState(0);
+    useState<string>();
 
-  const handleAddOneToCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender + 1);
+  const handleChooseCanEmoji = () => {
+    queueRerenderWithNewEmojiValue("🥫");
   };
 
-  const handleSubtractOneFromCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender - 1);
+  const handleChooseSquidEmoji = () => {
+    queueRerenderWithNewEmojiValue("🦑");
+  };
+  const handleChooseCarEmoji = () => {
+    queueRerenderWithNewEmojiValue("🚙");
+  };
+  const handleChooseBikeEmoji = () => {
+    queueRerenderWithNewEmojiValue("🚲");
+  };
+  const handleChooseRadioEmoji = () => {
+    queueRerenderWithNewEmojiValue("📻");
   };
 
-  const handleStoreCurrentCount = () => {
-    queueRerenderWithNewFavouriteValue(counterValueFromCurrentRender);
+  const handleChooseUnicornEmoji = () => {
+    queueRerenderWithNewEmojiValue("🦄");
+  };
+
+  const handleChooseElephantEmoji = () => {
+    queueRerenderWithNewEmojiValue("🐘");
+  };
+  
+  
+  const handleStoreCurrentEmoji = () => {
+    queueRerenderWithNewFavouriteValue(emojiValueFromCurrentRender);
   };
 
   return (
     <>
-      <h1>Number picker</h1>
-      <p>Your stored number: {favouriteValueFromCurrentRender}</p>
-      <p>Counter: {counterValueFromCurrentRender}</p>
-      <button onClick={handleSubtractOneFromCounter}>-1</button>
-      <button onClick={handleAddOneToCounter}>+1</button>
+      <h1>🤸👀🔆Emoji picker🚀🎆👍</h1>
+      <p>Your stored emoji: {favouriteValueFromCurrentRender}</p>
+      <p>Current Emoji: {emojiValueFromCurrentRender}</p>
+      <button onClick={handleChooseCanEmoji}>🥫</button>
+      <button onClick={handleChooseSquidEmoji}>🦑</button>
+      <button onClick={handleChooseCarEmoji}>🚙</button>
+      <button onClick={handleChooseBikeEmoji}>🚲</button>
+      <button onClick={handleChooseRadioEmoji}>📻</button>
+      <button onClick={handleChooseUnicornEmoji}>🦄</button>
+      <button onClick={handleChooseElephantEmoji}>🐘</button>
       <hr />
-      <button onClick={handleStoreCurrentCount}>Store current count</button>
+      <button onClick={handleStoreCurrentEmoji}>Store current emoji</button>
     </>
   );
 }
