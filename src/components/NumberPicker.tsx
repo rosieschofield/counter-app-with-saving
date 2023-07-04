@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./styles.css";
 
 export default function EmojiPicker(): JSX.Element {
   const [emojiValueFromCurrentRender, queueRerenderWithNewEmojiValue] =
@@ -38,7 +39,7 @@ export default function EmojiPicker(): JSX.Element {
 
 
   return (
-    <>
+    <section>
       <h1>🤸👀🔆Emoji picker🚀🎆👍</h1>
       <p>Your last 5 emojis: {favouriteValueFromCurrentRender.map((x,index)=><li key={x[index]}>{x}</li>)}</p>
       <p>Current Emoji: {emojiValueFromCurrentRender}</p>
@@ -51,6 +52,6 @@ export default function EmojiPicker(): JSX.Element {
       <button onClick={handleChooseElephantEmoji}>🐘</button>
       <hr />
       <button onClick={handleStoreCurrentEmoji}>Store current emoji</button>
-    </>
+    </section>
   );
 }
