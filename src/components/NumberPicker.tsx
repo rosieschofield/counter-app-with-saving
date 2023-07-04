@@ -2,9 +2,9 @@ import { useState } from "react";
 
 export default function EmojiPicker(): JSX.Element {
   const [emojiValueFromCurrentRender, queueRerenderWithNewEmojiValue] =
-    useState<string>();
+    useState<string>("");
   const [favouriteValueFromCurrentRender, queueRerenderWithNewFavouriteValue] =
-    useState<string>();
+    useState<string[]>([]);
 
   const handleChooseCanEmoji = () => {
     queueRerenderWithNewEmojiValue("🥫");
@@ -33,13 +33,14 @@ export default function EmojiPicker(): JSX.Element {
   
   
   const handleStoreCurrentEmoji = () => {
-    queueRerenderWithNewFavouriteValue(emojiValueFromCurrentRender);
+    queueRerenderWithNewFavouriteValue(prevValues => [...prevValues.slice(-4), emojiValueFromCurrentRender,]);
   };
+
 
   return (
     <>
       <h1>🤸👀🔆Emoji picker🚀🎆👍</h1>
-      <p>Your stored emoji: {favouriteValueFromCurrentRender}</p>
+      <p>Your last 5 emojis: {favouriteValueFromCurrentRender.map((x,index)=><li key={x[index]}>{x}</li>)}</p>
       <p>Current Emoji: {emojiValueFromCurrentRender}</p>
       <button onClick={handleChooseCanEmoji}>🥫</button>
       <button onClick={handleChooseSquidEmoji}>🦑</button>
