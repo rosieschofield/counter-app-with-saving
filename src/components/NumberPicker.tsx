@@ -30,8 +30,7 @@ export default function EmojiPicker(): JSX.Element {
   const handleChooseElephantEmoji = () => {
     queueRerenderWithNewEmojiValue("🐘");
   };
-  
-  
+
   const handleStoreCurrentEmoji = () => {
     queueRerenderWithNewFavouriteValue(emojiValueFromCurrentRender);
   };
