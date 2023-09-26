@@ -31,17 +31,23 @@ export default function EmojiPicker(): JSX.Element {
   const handleChooseElephantEmoji = () => {
     queueRerenderWithNewEmojiValue("🐘");
   };
-  
-  
-  const handleStoreCurrentEmoji = () => {
-    queueRerenderWithNewFavouriteValue(prevValues => [...prevValues.slice(-4), emojiValueFromCurrentRender,]);
-  };
 
+  const handleStoreCurrentEmoji = () => {
+    queueRerenderWithNewFavouriteValue((prevValues) => [
+      ...prevValues.slice(-4),
+      emojiValueFromCurrentRender,
+    ]);
+  };
 
   return (
     <section>
       <h1>🤸👀🔆Emoji picker🚀🎆👍</h1>
-      <p>Your last 5 emojis: {favouriteValueFromCurrentRender.map((x,index)=><li key={x[index]}>{x}</li>)}</p>
+      <p>
+        Your last 5 emojis:{" "}
+        {favouriteValueFromCurrentRender.map((x, index) => (
+          <li key={x[index]}>{x}</li>
+        ))}
+      </p>
       <p>Current Emoji: {emojiValueFromCurrentRender}</p>
       <button onClick={handleChooseCanEmoji}>🥫</button>
       <button onClick={handleChooseSquidEmoji}>🦑</button>
